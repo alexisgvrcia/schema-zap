@@ -27,7 +27,7 @@
   const sizes = {
     sm: 'w-full max-w-sm',
     md: 'w-full max-w-md',
-    lg: 'w-full max-w-2xl max-h-[90vh] overflow-y-auto'
+    lg: 'w-full max-w-2xl'
   };
 
   function handleOverlayClick(e: MouseEvent) {
@@ -59,37 +59,42 @@
 
 {#if open}
   <div
-    class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm md:px-0"
+    class="fixed inset-0 z-[9999] overflow-y-auto bg-black/50 backdrop-blur-sm"
     onclick={handleOverlayClick}
     onkeydown={handleKeydown}
     role="dialog"
     aria-modal="true"
     tabindex="-1"
   >
-    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-    <div
-      class={cn('rounded-lg bg-white p-6 shadow-2xl dark:bg-[#111111]', sizes[size])}
-      onclick={(e) => e.stopPropagation()}
-      onkeydown={(e) => e.stopPropagation()}
-      role="document"
-    >
-      {#if title}
-        <div class="mb-4">
-          <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {@render title()}
-          </h3>
-        </div>
-      {/if}
+    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+      <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+      <div
+        class={cn(
+          'relative transform rounded-lg bg-white p-6 text-left shadow-2xl transition-all dark:bg-[#111111]',
+          sizes[size]
+        )}
+        onclick={(e) => e.stopPropagation()}
+        onkeydown={(e) => e.stopPropagation()}
+        role="document"
+      >
+        {#if title}
+          <div class="mb-4">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+              {@render title()}
+            </h3>
+          </div>
+        {/if}
 
-      <div class="space-y-4">
-        {@render children?.()}
+        <div class="space-y-4">
+          {@render children?.()}
+        </div>
+
+        {#if footer}
+          <div class="mt-6 flex justify-end gap-3">
+            {@render footer()}
+          </div>
+        {/if}
       </div>
-
-      {#if footer}
-        <div class="mt-6 flex justify-end gap-3">
-          {@render footer()}
-        </div>
-      {/if}
     </div>
   </div>
 {/if}

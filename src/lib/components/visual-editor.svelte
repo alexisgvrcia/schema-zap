@@ -387,7 +387,7 @@
     </div>
   </div>
 
-  <div class="min-h-0 flex-1 overflow-y-auto">
+  <div class="custom-scrollbar min-h-0 flex-1 overflow-y-auto">
     {#if visualTables.length === 0}
       <div class="py-8 text-center text-gray-500 dark:text-gray-400">
         {#if $sqlInput.trim()}
@@ -401,7 +401,7 @@
           variant="default"
           size="sm"
           onClick={() => (showNewTableForm = true)}
-          class="rounded-lg bg-gray-600 px-4 py-2 text-sm text-white transition-colors duration-150 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600"
+          class="rounded-lg bg-gray-600 px-4 py-2 text-sm text-white transition-colors duration-150 hover:bg-zinc-700 dark:bg-zinc-700 dark:hover:bg-zinc-600"
         >
           Create first table
         </Button>
@@ -472,3 +472,31 @@
   onSaveColumn={saveColumn}
   onUpdateColumnForm={updateColumnForm}
 />
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #d4d4d8;
+    border-radius: 9999px;
+  }
+
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #3f3f46;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1aa;
+  }
+
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #52525b;
+  }
+</style>

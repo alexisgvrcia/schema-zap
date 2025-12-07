@@ -28,10 +28,10 @@
     default:
       'bg-zinc-900 text-white hover:bg-zinc-700 disabled:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600',
     ghost:
-      'bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white',
+      'bg-transparent text-gray-600 hover:bg-zinc-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-zinc-700 dark:hover:text-white',
     icon: 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white',
     table:
-      'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-gray-200'
+      'text-gray-600 hover:bg-zinc-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-zinc-600 dark:hover:text-gray-200'
   };
 
   const sizeClasses = {
@@ -42,14 +42,13 @@
 
   const baseClasses = {
     default:
-      'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center justify-center',
+      'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500',
     ghost:
-      'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center justify-center',
-    icon: 'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center',
+      'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500',
+    icon: 'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500',
     table:
-      'cursor-pointer rounded transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center'
+      'cursor-pointer rounded transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500'
   };
-
 </script>
 
 <button

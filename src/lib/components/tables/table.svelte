@@ -125,28 +125,27 @@
 <div
   id="table-{table.name.toLowerCase()}"
   class={cn(
-    'table-node max-w-96 min-w-[290px] rounded-lg border shadow-lg select-none',
-    'border-white/30 bg-white/90 dark:border-gray-600 dark:bg-black/90',
+    'table-node max-w-96 min-w-[290px] rounded-lg border transition-all duration-500 ease-out select-none',
+    'bg-white/90 dark:bg-black/90',
     isDragging && 'dragging',
-    isSelected && 'selected'
+    !isSelected && !isDragging && 'border-white/30 shadow-sm dark:border-gray-600',
+    isSelected && 'border-black/20 shadow-none dark:border-white/20'
   )}
   style="transform: {isDragging
     ? 'translate3d(0, 0, 0) rotate(1deg) scale(1.05)'
     : 'translate3d(0, 0, 0)'};
-		   box-shadow: {isDragging
-    ? '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-    : isSelected
-      ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-      : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'};
-		   border-color: {isSelected ? '#6b7280' : 'rgba(255, 255, 255, 0.3)'};
-		   ring: {isSelected ? '2px solid #6b7280' : 'none'};
-		   z-index: {isDragging ? '1000' : isSelected ? '10' : '1'};
-		   will-change: transform;
-		   contain: layout style paint;
-		   backface-visibility: hidden;
-		   transform-style: preserve-3d;"
+       z-index: {isDragging ? '1000' : isSelected ? '10' : '1'};
+       will-change: transform;
+       contain: layout style paint;
+       backface-visibility: hidden;
+       transform-style: preserve-3d;"
   bind:this={box}
 >
+  {#if isSelected}
+    <div
+      class="pointer-events-none absolute inset-0 animate-pulse rounded-lg border-2 border-black/20 dark:border-white/20"
+    ></div>
+  {/if}
   <div
     class={cn(
       'flex items-center justify-between rounded-t-lg border-b px-4 py-3',

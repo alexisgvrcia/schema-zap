@@ -78,7 +78,7 @@
       <div
         class={cn(
           'opacity-60 transition-opacity duration-200 ease-in-out hover:opacity-100',
-          'hover:bg-gray-200 dark:hover:bg-gray-600'
+          'hover:bg-zinc-200 dark:hover:bg-zinc-600'
         )}
         title="Drag to reorder"
         draggable="true"
@@ -108,45 +108,18 @@
       </Button>
     </div>
     <div class="flex items-center">
-      {#if table.columns.length < 2 || !isExpanded}
-        <Button
-          variant="icon"
-          size="sm"
-          onClick={() => onEditTable(table.name)}
-          title="Edit table"
-        >
-          <Pencil class="h-3 w-3" />
-        </Button>
-        <Button
-          variant="icon"
-          size="sm"
-          onClick={() => onAddColumn(table.name)}
-          title="Add column"
-        >
-          <Plus class="h-3 w-3" />
-        </Button>
-        <Button
-          variant="icon"
-          size="sm"
-          onClick={() => onRemoveTable(table.name)}
-          title="Remove table"
-        >
-          <Trash2 class="h-3 w-3" />
-        </Button>
-      {:else}
-        <MenuBar
-          options={[
-            { label: 'Edit Table', icon: Pencil, onClick: () => onEditTable(table.name) },
-            { label: 'Add Column', icon: Plus, onClick: () => onAddColumn(table.name) },
-            {
-              label: 'Remove Table',
-              icon: Trash2,
-              onClick: () => onRemoveTable(table.name),
-              iconClass: 'text-red-500'
-            }
-          ]}
-        />
-      {/if}
+      <MenuBar
+        options={[
+          { label: 'Edit Table', icon: Pencil, onClick: () => onEditTable(table.name) },
+          { label: 'Add Column', icon: Plus, onClick: () => onAddColumn(table.name) },
+          {
+            label: 'Remove Table',
+            icon: Trash2,
+            onClick: () => onRemoveTable(table.name),
+            iconClass: 'text-red-500'
+          }
+        ]}
+      />
     </div>
   </div>
 
@@ -156,13 +129,15 @@
         <p class={cn('text-sm italic', 'text-gray-500 dark:text-gray-400')}>No columns defined</p>
       {:else}
         {#each table.columns as column, columnIndex (column.name)}
+          {#if dropColumnIndex === columnIndex && draggedColumnIndex !== columnIndex}
+            <div class="h-0.5 w-full rounded-full bg-black/20 dark:bg-white/20"></div>
+          {/if}
           <div
             class={cn(
               'flex items-center justify-between rounded border p-2',
               'border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900',
               draggedColumnIndex === columnIndex && 'opacity-50',
-              dropColumnIndex === columnIndex &&
-                'border-gray-400 bg-gray-100 dark:border-gray-500 dark:bg-gray-800/30'
+              draggedColumnIndex === columnIndex && 'opacity-50'
             )}
             ondragover={(e) => onColumnDragOver(e, table.name, columnIndex)}
             ondrop={(e) => onColumnDrop(e, table.name, columnIndex)}
@@ -171,8 +146,8 @@
             <div class="flex flex-1 items-center gap-2">
               <div
                 class={cn(
-                  'opacity-60 transition-opacity duration-200 ease-in-out hover:opacity-100 cursor-move rounded p-1',
-                  'hover:bg-gray-200 dark:hover:bg-gray-500'
+                  'cursor-move rounded p-1 opacity-60 transition-opacity duration-200 ease-in-out hover:opacity-100',
+                  'hover:bg-zinc-200 dark:hover:bg-zinc-500'
                 )}
                 title="Drag to reorder"
                 draggable="true"
@@ -203,7 +178,7 @@
 
             <div class="flex items-center gap-1">
               <Button
-                variant="table"
+                variant="icon"
                 size="sm"
                 onClick={() => onEditColumn(table.name, column)}
                 title="Edit column"
@@ -211,7 +186,7 @@
                 <Pencil class="h-3 w-3" />
               </Button>
               <Button
-                variant="table"
+                variant="icon"
                 size="sm"
                 onClick={() => onRemoveColumn(table.name, column.name)}
                 title="Remove column"

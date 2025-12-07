@@ -41,7 +41,7 @@
       id="edit-table-name"
       type="text"
       value={editTableForm.name}
-      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-gray-500 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400"
+      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 outline-none focus:border-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:border-gray-100 dark:focus:ring-gray-100"
       onkeydown={(e) => e.key === 'Enter' && handleSaveChanges()}
       oninput={(e) => onUpdateName((e.target as HTMLInputElement).value)}
     />

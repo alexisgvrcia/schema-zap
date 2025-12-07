@@ -53,7 +53,7 @@
     </Button>
 
     <div
-      class="flex h-8 min-w-12 items-center justify-center rounded-md bg-gray-50 px-2 text-xs font-medium text-gray-700 sm:h-10 sm:min-w-14 sm:px-3 sm:text-sm dark:bg-gray-700 dark:text-gray-300"
+      class="flex h-8 min-w-12 items-center justify-center rounded-md px-2 text-xs font-medium text-gray-700 sm:h-10 sm:min-w-14 sm:px-3 sm:text-sm dark:text-gray-300"
     >
       {zoomPercentage}%
     </div>
@@ -76,8 +76,8 @@
       class={cn(
         'flex h-8 w-8 items-center justify-center rounded-md transition-all duration-150 sm:h-10 sm:w-10',
         $showBadgets
-          ? 'bg-gray-600 text-white dark:bg-gray-400 dark:text-black'
-          : 'border-none bg-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200'
+          ? 'bg-zinc-800 text-white dark:bg-zinc-200 dark:text-black'
+          : 'border-none bg-transparent text-gray-500 hover:bg-zinc-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-zinc-800 dark:hover:text-gray-200'
       )}
     >
       <Tag class="h-4 w-4 sm:h-5 sm:w-5" />

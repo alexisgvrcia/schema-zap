@@ -234,8 +234,7 @@
       const codeTag = codeElement.querySelector('code');
       if (codeTag) {
         const highlighted = highlightSQL(value);
-        const extraContent = '\n'.repeat(10);
-        codeTag.innerHTML = highlighted + extraContent;
+        codeTag.innerHTML = highlighted;
       }
     }
   }
@@ -441,7 +440,7 @@
     border: none !important;
     outline: none !important;
     resize: none !important;
-    overflow: auto !important;
+    overflow: hidden !important;
     background: transparent !important;
     color: transparent !important;
     tab-size: 4 !important;
@@ -492,51 +491,33 @@
 
   #sql-textarea::-webkit-scrollbar,
   pre::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
   }
 
   #sql-textarea::-webkit-scrollbar-track,
   pre::-webkit-scrollbar-track {
-    background: rgba(248, 250, 252, 0.8);
-    border-radius: 4px;
+    background: transparent;
   }
 
   #sql-textarea::-webkit-scrollbar-thumb,
   pre::-webkit-scrollbar-thumb {
-    background: rgba(203, 213, 225, 0.8);
-    border-radius: 4px;
-    border: 1px solid rgba(248, 250, 252, 0.5);
-  }
-
-  #sql-textarea::-webkit-scrollbar-thumb:hover,
-  pre::-webkit-scrollbar-thumb:hover {
-    background: rgba(148, 163, 184, 0.9);
-  }
-
-  #sql-textarea::-webkit-scrollbar-corner,
-  pre::-webkit-scrollbar-corner {
-    background: rgba(248, 250, 252, 0.8);
-  }
-
-  :global(.dark) #sql-textarea::-webkit-scrollbar-track,
-  :global(.dark) pre::-webkit-scrollbar-track {
-    background: rgba(31, 41, 55, 0.8);
+    background-color: #d4d4d8;
+    border-radius: 9999px;
   }
 
   :global(.dark) #sql-textarea::-webkit-scrollbar-thumb,
   :global(.dark) pre::-webkit-scrollbar-thumb {
-    background: rgba(75, 85, 99, 0.8);
-    border: 1px solid rgba(31, 41, 55, 0.5);
+    background-color: #3f3f46;
+  }
+
+  #sql-textarea::-webkit-scrollbar-thumb:hover,
+  pre::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1aa;
   }
 
   :global(.dark) #sql-textarea::-webkit-scrollbar-thumb:hover,
   :global(.dark) pre::-webkit-scrollbar-thumb:hover {
-    background: rgba(107, 114, 128, 0.9);
-  }
-
-  :global(.dark) #sql-textarea::-webkit-scrollbar-corner,
-  :global(.dark) pre::-webkit-scrollbar-corner {
-    background: rgba(31, 41, 55, 0.8);
+    background-color: #52525b;
   }
 </style>

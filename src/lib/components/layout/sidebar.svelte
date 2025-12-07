@@ -30,16 +30,14 @@
     </Button>
 
     <div class="flex h-full flex-col">
-      <nav
-        class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-[#111111]"
-      >
+      <nav class="flex border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-[#111111]">
         <Button
           onClick={() => setActiveTab('sql')}
           class={cn(
             'flex-1 cursor-pointer border-b-2 px-4 py-3 text-sm font-medium transition-colors duration-150',
             activeTab === 'sql'
-              ? 'border-gray-700 bg-white text-gray-600 dark:bg-[#111111] dark:text-white'
-              : 'border-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-[#111] dark:hover:text-gray-300'
+              ? 'border-zinc-700 bg-white text-gray-600 dark:border-zinc-100 dark:bg-[#111111] dark:text-white'
+              : 'border-transparent text-gray-500 hover:bg-zinc-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-[#111] dark:hover:text-gray-300'
           )}
         >
           <div class="flex items-center justify-center gap-2">
@@ -52,8 +50,8 @@
           class={cn(
             'flex-1 cursor-pointer border-b-2 px-4 py-3 text-sm font-medium transition-colors duration-150',
             activeTab === 'visual'
-              ? 'border-gray-700 bg-white text-gray-600 dark:bg-[#111111] dark:text-white'
-              : 'border-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-[#111] dark:hover:text-gray-300'
+              ? 'border-zinc-700 bg-white text-gray-600 dark:border-zinc-100 dark:bg-[#111111] dark:text-white'
+              : 'border-transparent text-gray-500 hover:bg-zinc-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-[#111] dark:hover:text-gray-300'
           )}
         >
           <div class="flex items-center justify-center gap-2">
@@ -77,7 +75,7 @@
     <div class="h-full w-6 bg-gray-50 dark:bg-zinc-900"></div>
     <Button
       onClick={toggleSidebar}
-      class="absolute top-1/2 -right-3 z-50 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-gray-200 bg-white shadow-md transition-all duration-200 hover:shadow-lg dark:border-gray-600 dark:bg-gray-800"
+      class="absolute top-1/2 -right-3 z-50 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white shadow-md transition-all duration-200 hover:shadow-lg dark:border-zinc-600 dark:bg-zinc-800"
       title="Show sidebar"
     >
       <ChevronRight class="h-6 w-6 text-gray-600 dark:text-gray-300" />

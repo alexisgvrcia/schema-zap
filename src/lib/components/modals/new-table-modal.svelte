@@ -39,17 +39,19 @@
       id="table-name"
       type="text"
       bind:value={newTableName}
-      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-gray-500 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400"
+      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 outline-none focus:border-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:border-gray-100 dark:focus:ring-gray-100"
       placeholder="usuarios, productos, etc."
       onkeydown={(e) => e.key === 'Enter' && handleAddTable()}
     />
   </div>
 
   {#snippet footer()}
-    <Button variant="ghost" onClick={handleClose}>
-      Cancel
-    </Button>
-    <Button variant="default" onClick={handleAddTable} disabled={!isValidTableName(newTableName, visualTables)}>
+    <Button variant="ghost" onClick={handleClose}>Cancel</Button>
+    <Button
+      variant="default"
+      onClick={handleAddTable}
+      disabled={!isValidTableName(newTableName, visualTables)}
+    >
       Create Table
     </Button>
   {/snippet}
