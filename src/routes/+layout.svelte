@@ -10,7 +10,7 @@
 {@render children()}
 <Toaster
   theme={mode.current === 'dark' ? 'dark' : 'light'}
-  position="bottom-right"
+  position="bottom-center"
   class="toaster"
   toastOptions={{
     unstyled: true,
