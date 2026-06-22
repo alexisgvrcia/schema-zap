@@ -58,7 +58,7 @@
   </div>
 
   <div class="flex items-center gap-1 md:gap-2">
-    <a href="https://github.com/gvrciary/schema-zap" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/alexisgvrcia/schema-zap" target="_blank" rel="noopener noreferrer">
       <Button variant="icon" size="sm" title="Github Repository">
         <GithubIcon class="h-4 w-4" />
       </Button>

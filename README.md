@@ -28,7 +28,7 @@ SchemaZap is a powerful web application that transforms your SQL DDL (Data Defin
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/gvrciary/schema-zap.git
+   git clone https://github.com/alexisgvrcia/schema-zap.git
    cd schema-zap
    ```
 
@@ -44,4 +44,4 @@ SchemaZap is a powerful web application that transforms your SQL DDL (Data Defin
 
 ## License
 
-[![LICENSE - Apache 2.0 by gvrciary](https://img.shields.io/badge/LICENSE-Apache%202.0-111111?style=for-the-badge&labelColor=111111&logo=open-source-initiative&logoColor=white)](LICENSE)
+[![LICENSE - Apache 2.0 by alexisgvrcia](https://img.shields.io/badge/LICENSE-Apache%202.0-111111?style=for-the-badge&labelColor=111111&logo=open-source-initiative&logoColor=white)](LICENSE)
