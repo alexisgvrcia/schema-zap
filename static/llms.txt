@@ -1,0 +1,29 @@
+# SchemaZap
+
+SchemaZap is a web application that converts SQL DDL into visual database diagrams.
+
+## What it does
+
+- Parses SQL DDL statements
+- Visualizes tables and relationships
+- Supports schema exploration and editing
+- Exports schema diagrams as PNG images
+
+## Best entry points
+
+- Homepage: https://schemazap.vercel.app/
+- GitHub repository: https://github.com/alexisgvrcia/schema-zap
+
+## Intended users
+
+- Developers
+- Database engineers
+- Data modelers
+- Students learning relational schema design
+
+## Key topics
+
+- SQL DDL to diagram
+- Database schema visualization
+- Entity relationship diagram generation
+- Table relationship mapping

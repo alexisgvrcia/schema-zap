@@ -54,7 +54,7 @@
 >
   <div class="flex items-center gap-2 md:gap-3">
     <img src="/icon.svg" alt="SchemaZap Logo" class="h-8 w-8" />
-    <h1 class="text-lg font-bold text-gray-900 md:text-xl dark:text-gray-300">SchemaZap</h1>
+    <span class="text-lg font-bold text-gray-900 md:text-xl dark:text-gray-300">SchemaZap</span>
   </div>
 
   <div class="flex items-center gap-1 md:gap-2">

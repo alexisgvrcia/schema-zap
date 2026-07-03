@@ -8,14 +8,14 @@
       name="googlebot"
       content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
     />
-    <title>SchemaZap - Convert SQL Queries into Database Diagrams</title>
+    <title>SchemaZap | Convert SQL DDL to Database Diagrams Online</title>
     <link rel="canonical" href="https://schemazap.vercel.app/" />
     <meta
       name="description"
-      content="Convert your SQL queries into visual database schemas instantly with SchemaZap, perfect for developers and data modeling"
+      content="Convert SQL DDL into visual database diagrams online. Use SchemaZap to map tables, inspect relationships, and understand your schema faster."
     />
     <meta name="author" content="alexisgvrcia" />
-    <link rel="author" href="alexisgvrcia.dev" />
+    <link rel="author" href="https://alexisgvrcia.dev" />
     <link rel="manifest" href="%sveltekit.assets%/site.webmanifest.json" />
 
     <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
@@ -28,11 +28,12 @@
     />
 
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="SchemaZap" />
-    <meta property="og:title" content="SchemaZap" />
+    <meta property="og:title" content="SchemaZap | Convert SQL DDL to Database Diagrams Online" />
     <meta
       property="og:description"
-      content="Convert your SQL queries into visual database schemas instantly with SchemaZap, perfect for developers and data modeling"
+      content="Convert SQL DDL into visual database diagrams online. Use SchemaZap to map tables, inspect relationships, and understand your schema faster."
     />
     <meta property="og:url" content="https://schemazap.vercel.app/" />
     <meta property="og:image" content="https://schemazap.vercel.app/og-image.png" />
@@ -41,16 +42,52 @@
     <meta property="og:image:alt" content="SchemaZap - Visual database schema editor" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SchemaZap" />
+    <meta name="twitter:title" content="SchemaZap | Convert SQL DDL to Database Diagrams Online" />
     <meta
       name="twitter:description"
-      content="Convert your SQL queries into visual database schemas instantly with SchemaZap, perfect for developers and data modeling"
+      content="Convert SQL DDL into visual database diagrams online. Use SchemaZap to map tables, inspect relationships, and understand your schema faster."
     />
+    <meta name="twitter:site" content="@alexisgvrcia" />
     <meta name="twitter:creator" content="@alexisgvrcia" />
     <meta name="twitter:image" content="https://schemazap.vercel.app/og-image.png" />
     <meta name="twitter:image:width" content="1200" />
     <meta name="twitter:image:height" content="630" />
     <meta name="twitter:image:alt" content="SchemaZap - Visual database schema editor" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "SchemaZap",
+            "url": "https://schemazap.vercel.app/",
+            "founder": {
+              "@type": "Person",
+              "name": "alexisgvrcia"
+            },
+            "sameAs": ["https://github.com/alexisgvrcia/schema-zap", "https://alexisgvrcia.dev"]
+          },
+          {
+            "@type": "WebApplication",
+            "name": "SchemaZap",
+            "url": "https://schemazap.vercel.app/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Web",
+            "description": "Convert SQL DDL into visual database diagrams online. Use SchemaZap to map tables, inspect relationships, and understand your schema faster.",
+            "image": "https://schemazap.vercel.app/og-image.png",
+            "creator": {
+              "@type": "Organization",
+              "name": "SchemaZap"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      }
+    </script>
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">

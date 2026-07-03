@@ -20,11 +20,12 @@
       {:else}
         <div class="flex h-full flex-col items-center justify-center p-8">
           <Database class="mb-4 h-16 w-16  text-gray-300 dark:text-gray-600" />
-          <h3 class="mb-2 text-lg font-medium text-gray-900 dark:text-gray-100">
-            No Schema Loaded
-          </h3>
+          <h1 class="mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
+            Convert SQL to a Visual Database Diagram
+          </h1>
           <p class="mb-4 max-w-md text-center text-gray-600 dark:text-gray-400">
-            Enter SQL DDL statements in the sidebar to generate a visual database schema.
+            Paste SQL DDL statements in the sidebar to generate a database schema, inspect table
+            relationships, and export a cleaner view of your data model.
           </p>
         </div>
       {/if}
