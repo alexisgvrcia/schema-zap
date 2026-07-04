@@ -1,6 +1,6 @@
 import type { RequestHandler } from "./$types";
 
-const siteUrl = "https://schemazap.vercel.app";
+const siteUrl = "https://schemazap.alexisgvrcia.dev";
 
 export const GET: RequestHandler = async () => {
 	const body = `User-agent: *

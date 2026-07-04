@@ -11,7 +11,7 @@ SchemaZap is a web application that converts SQL DDL into visual database diagra
 
 ## Best entry points
 
-- Homepage: https://schemazap.vercel.app/
+- Homepage: https://schemazap.alexisgvrcia.dev/
 - GitHub repository: https://github.com/alexisgvrcia/schema-zap
 
 ## Intended users
