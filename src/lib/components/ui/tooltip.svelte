@@ -30,6 +30,24 @@
     isOpen = true;
   }
 
+  function hide() {
+    isOpen = false;
+  }
+
+  function showOnFocus() {
+    if (document.activeElement?.matches(':focus-visible')) show();
+  }
+
+  function dismissOnClick(node: HTMLElement) {
+    node.addEventListener('click', hide);
+
+    return {
+      destroy() {
+        node.removeEventListener('click', hide);
+      }
+    };
+  }
+
   function portal(node: HTMLElement) {
     document.body.appendChild(node);
 
@@ -56,11 +74,12 @@
 <span
   bind:this={trigger}
   role="group"
+  use:dismissOnClick
   class="inline-flex"
   onpointerenter={show}
-  onpointerleave={() => (isOpen = false)}
-  onfocusin={show}
-  onfocusout={() => (isOpen = false)}
+  onpointerleave={hide}
+  onfocusin={showOnFocus}
+  onfocusout={hide}
 >
   {@render children()}
 </span>
