@@ -141,7 +141,7 @@
     {id}
     type="button"
     class={cn(
-      'flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none transition-[border-color,box-shadow,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.99] hover:border-foreground/25 focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-foreground/15',
+      'flex min-h-11 w-full cursor-pointer items-center justify-between rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none transition-[border-color,box-shadow,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.99] hover:border-foreground/25 focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-foreground/15 sm:min-h-10',
       disabled && 'cursor-not-allowed opacity-40 active:scale-100'
     )}
     {disabled}
@@ -187,7 +187,7 @@
           <button
             type="button"
             class={cn(
-              'flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-foreground outline-none transition-colors duration-150 hover:bg-primary focus-visible:bg-primary',
+              'flex min-h-11 w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-foreground outline-none transition-colors duration-150 hover:bg-primary focus-visible:bg-primary sm:min-h-10',
               option.value === value && 'bg-primary',
               option.disabled && 'cursor-not-allowed opacity-40 hover:bg-transparent',
               optionClass

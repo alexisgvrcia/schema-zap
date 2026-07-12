@@ -59,7 +59,7 @@
 
   <div class="flex items-center gap-1 md:gap-2">
     <a
-      class="flex min-h-10 min-w-10 items-center justify-center rounded-lg text-foreground/65 outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] hover:bg-primary hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/30"
+      class="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-foreground/65 outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] hover:bg-primary hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/30 sm:min-h-10 sm:min-w-10"
       href="https://github.com/alexisgvrcia/schema-zap"
       target="_blank"
       rel="noopener noreferrer"

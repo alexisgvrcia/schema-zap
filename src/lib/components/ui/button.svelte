@@ -39,10 +39,10 @@
 
   const baseClasses = {
     default:
-      'inline-flex cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100',
+      'inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100 sm:min-h-10',
     ghost:
-      'inline-flex cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100',
-    icon: 'flex min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100',
+      'inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100 sm:min-h-10',
+    icon: 'flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100 sm:min-h-10 sm:min-w-10',
     table:
       'flex cursor-pointer items-center justify-center rounded outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100'
   };

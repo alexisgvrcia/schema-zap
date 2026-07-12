@@ -10,7 +10,7 @@
 <div class="flex h-svh flex-col bg-background text-foreground">
   <Header />
 
-  <main class="flex flex-1 overflow-hidden">
+  <main class="relative flex flex-1 overflow-hidden">
     <Sidebar />
 
     <section class="relative flex-1 overflow-hidden bg-background">
@@ -19,7 +19,7 @@
         <Toolbar />
       {:else}
         <div
-          class="mx-auto flex h-full max-w-xl flex-col items-center justify-center p-8 text-center"
+          class="mx-auto flex h-full max-w-xl flex-col items-center justify-center p-5 text-center sm:p-8"
         >
           <div class="mb-6 flex size-14 items-center justify-center rounded-2xl bg-primary">
             <Database class="h-6 w-6 text-foreground/60" />

@@ -19,12 +19,12 @@
 
 {#if $showSidebar}
   <aside
-    class="relative w-[min(88vw,24rem)] flex-shrink-0 border-r border-foreground/10 bg-background"
+    class="absolute inset-y-0 left-0 z-[2000] w-full flex-shrink-0 border-r border-foreground/10 bg-background sm:relative sm:z-auto sm:w-80 md:w-96"
   >
     <Button
       onClick={toggleSidebar}
       variant="icon"
-      class="absolute top-1/2 -right-3 z-50 h-6 min-h-6 w-6 min-w-6 -translate-y-1/2 rounded-full border border-foreground/10 bg-background shadow-md"
+      class="absolute top-1/2 right-2 z-50 h-8 min-h-8 w-8 min-w-8 -translate-y-1/2 rounded-full border border-foreground/10 bg-background shadow-md sm:-right-3 sm:h-6 sm:min-h-6 sm:w-6 sm:min-w-6"
       title="Hide sidebar"
     >
       <ChevronLeft class="h-4 w-4 text-foreground/60" />
@@ -64,7 +64,7 @@
         </Button>
       </nav>
 
-      <div class="h-full flex-1 overflow-hidden bg-background p-4">
+      <div class="h-full flex-1 overflow-hidden bg-background p-3 sm:p-4">
         {#if activeTab === 'sql'}
           <InputEditor />
         {:else if activeTab === 'visual'}
@@ -74,8 +74,8 @@
     </div>
   </aside>
 {:else}
-  <div class="relative">
-    <div class="h-full w-6 bg-background"></div>
+  <div class="relative z-[2000] sm:z-auto">
+    <div class="h-full w-3 bg-background sm:w-6"></div>
     <Button
       onClick={toggleSidebar}
       variant="icon"

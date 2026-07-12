@@ -39,7 +39,7 @@
       id="table-name"
       type="text"
       bind:value={newTableName}
-      class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
+      class="min-h-11 w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15 sm:min-h-10"
       placeholder="users, products, etc."
       onkeydown={(e) => e.key === 'Enter' && handleAddTable()}
     />

@@ -33,7 +33,7 @@
 </script>
 
 <div
-  class="absolute bottom-4 left-1/2 z-[1000] -translate-x-1/2 rounded-xl border border-foreground/10 bg-background/85 p-1 shadow-xl backdrop-blur-md"
+  class="absolute bottom-3 left-1/2 z-[1000] max-w-[calc(100vw-1rem)] -translate-x-1/2 rounded-xl border border-foreground/10 bg-background/85 p-1 shadow-xl backdrop-blur-md sm:bottom-4"
 >
   <div class="flex items-center gap-0.5 sm:gap-1">
     <Button variant="icon" size="md" onClick={resetCanvas} title="Reset view">
@@ -53,7 +53,7 @@
     </Button>
 
     <div
-      class="flex h-10 min-w-14 items-center justify-center rounded-lg px-2 text-xs font-medium text-foreground/65 tabular-nums sm:px-3"
+      class="flex h-11 min-w-14 items-center justify-center rounded-lg px-2 text-xs font-medium text-foreground/65 tabular-nums sm:h-10 sm:px-3"
     >
       {zoomPercentage}%
     </div>
@@ -74,7 +74,7 @@
       onClick={toggleBadgets}
       title={$showBadgets ? 'Hide badges' : 'Show badges'}
       class={cn(
-        'flex h-10 w-10 items-center justify-center rounded-lg transition-[color,background-color,transform] duration-150',
+        'flex h-11 w-11 items-center justify-center rounded-lg transition-[color,background-color,transform] duration-150 sm:h-10 sm:w-10',
         $showBadgets
           ? 'bg-foreground text-background'
           : 'bg-transparent text-foreground/50 hover:bg-primary hover:text-foreground'

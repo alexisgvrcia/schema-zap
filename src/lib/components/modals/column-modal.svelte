@@ -114,7 +114,7 @@
       id="column-name"
       type="text"
       value={columnForm.name}
-      class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
+      class="min-h-11 w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15 sm:min-h-10"
       placeholder="id, name, email, etc."
       onkeydown={(e) => e.key === 'Enter' && handleSaveColumn()}
       oninput={(e) => updateField('name', (e.target as HTMLInputElement).value)}
@@ -146,7 +146,7 @@
         min="1"
         max="65535"
         value={columnForm.length || ''}
-        class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
+        class="min-h-11 w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15 sm:min-h-10"
         placeholder="e.g. 255, 50, 100"
         required={requiresLength(columnForm.type, $selectedDialect)}
         oninput={(e) => {
@@ -179,7 +179,7 @@
     </div>
   {/if}
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
     <label
       class="flex cursor-pointer items-center gap-2 rounded-lg p-2 transition-colors duration-150 hover:bg-primary {tableHasPrimaryKey(
         columnForm.tableName,

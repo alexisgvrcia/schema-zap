@@ -64,7 +64,7 @@
     {id}
     type="button"
     class={cn(
-      'flex min-h-10 min-w-10 items-center justify-center rounded-lg border border-foreground/10 bg-primary p-2 text-sm text-foreground outline-none transition-[border-color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] hover:border-foreground/20 focus-visible:ring-2 focus-visible:ring-foreground/20',
+      'flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-foreground/10 bg-primary p-2 text-sm text-foreground outline-none transition-[border-color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] hover:border-foreground/20 focus-visible:ring-2 focus-visible:ring-foreground/20 sm:min-h-10 sm:min-w-10',
       disabled && 'cursor-not-allowed opacity-40 active:scale-100'
     )}
     {disabled}
@@ -90,7 +90,7 @@
           <button
             type="button"
             class={cn(
-              'flex min-h-10 w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-left text-sm text-foreground outline-none transition-colors duration-150 hover:bg-primary focus-visible:bg-primary',
+              'flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-left text-sm text-foreground outline-none transition-colors duration-150 hover:bg-primary focus-visible:bg-primary sm:min-h-10',
               option.disabled && 'cursor-not-allowed opacity-40 hover:bg-transparent',
               optionClass
             )}

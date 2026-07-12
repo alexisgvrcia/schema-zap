@@ -107,13 +107,13 @@
     tabindex="-1"
     transition:fade={{ duration: motionDuration(160) }}
   >
-    <div class="flex min-h-full items-center justify-center p-4 text-center">
+    <div class="flex min-h-full items-center justify-center p-3 text-center sm:p-4">
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
       <div
         bind:this={panelElement}
         data-modal-panel
         class={cn(
-          'relative rounded-2xl border border-foreground/10 bg-background p-6 text-left shadow-2xl outline-none',
+          'relative max-h-[calc(100svh-1.5rem)] overflow-y-auto rounded-2xl border border-foreground/10 bg-background p-4 text-left shadow-2xl outline-none sm:max-h-[calc(100svh-2rem)] sm:p-6',
           sizes[size]
         )}
         onclick={(e) => e.stopPropagation()}
@@ -134,7 +134,7 @@
         </div>
 
         {#if footer}
-          <div class="mt-6 flex justify-end gap-2">
+          <div class="mt-5 flex flex-col-reverse gap-2 sm:mt-6 sm:flex-row sm:justify-end">
             {@render footer()}
           </div>
         {/if}
