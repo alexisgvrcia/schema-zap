@@ -33,14 +33,14 @@
 </script>
 
 <div
-  class="absolute bottom-4 left-1/2 z-[1000] -translate-x-1/2 transform rounded-lg border border-white/30 bg-white/10 p-1 shadow-xl backdrop-blur-md sm:p-2 dark:border-white/20 dark:bg-black/10"
+  class="absolute bottom-4 left-1/2 z-[1000] -translate-x-1/2 rounded-xl border border-foreground/10 bg-background/85 p-1 shadow-xl backdrop-blur-md"
 >
   <div class="flex items-center gap-0.5 sm:gap-1">
     <Button variant="icon" size="md" onClick={resetCanvas} title="Reset view">
       <RotateCcw class="h-4 w-4 sm:h-5 sm:w-5" />
     </Button>
 
-    <div class="mx-1 h-6 w-px bg-gray-200 sm:mx-2 dark:bg-gray-600"></div>
+    <div class="mx-1 h-6 w-px bg-foreground/10"></div>
 
     <Button
       variant="icon"
@@ -53,7 +53,7 @@
     </Button>
 
     <div
-      class="flex h-8 min-w-12 items-center justify-center rounded-md px-2 text-xs font-medium text-gray-700 sm:h-10 sm:min-w-14 sm:px-3 sm:text-sm dark:text-gray-300"
+      class="flex h-10 min-w-14 items-center justify-center rounded-lg px-2 text-xs font-medium text-foreground/65 tabular-nums sm:px-3"
     >
       {zoomPercentage}%
     </div>
@@ -68,16 +68,16 @@
       <ZoomIn class="h-4 w-4 sm:h-5 sm:w-5" />
     </Button>
 
-    <div class="mx-1 h-6 w-px bg-gray-200 sm:mx-2 dark:bg-gray-600"></div>
+    <div class="mx-1 h-6 w-px bg-foreground/10"></div>
 
     <Button
       onClick={toggleBadgets}
       title={$showBadgets ? 'Hide badges' : 'Show badges'}
       class={cn(
-        'flex h-8 w-8 items-center justify-center rounded-md transition-all duration-150 sm:h-10 sm:w-10',
+        'flex h-10 w-10 items-center justify-center rounded-lg transition-[color,background-color,transform] duration-150',
         $showBadgets
-          ? 'bg-zinc-800 text-white dark:bg-zinc-200 dark:text-black'
-          : 'border-none bg-transparent text-gray-500 hover:bg-zinc-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-zinc-800 dark:hover:text-gray-200'
+          ? 'bg-foreground text-background'
+          : 'bg-transparent text-foreground/50 hover:bg-primary hover:text-foreground'
       )}
     >
       <Tag class="h-4 w-4 sm:h-5 sm:w-5" />

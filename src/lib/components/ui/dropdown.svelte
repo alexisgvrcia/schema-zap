@@ -141,8 +141,8 @@
     {id}
     type="button"
     class={cn(
-      'flex w-full cursor-pointer items-center justify-between rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 transition-all duration-200 hover:border-gray-400 focus:border-gray-500 focus:ring-2 focus:ring-gray-500/50 focus:outline-none dark:border-gray-700 dark:bg-[#111111] dark:text-gray-300 dark:hover:border-gray-500',
-      disabled && 'cursor-not-allowed opacity-50 hover:border-gray-200 dark:hover:border-gray-700'
+      'flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none transition-[border-color,box-shadow,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.99] hover:border-foreground/25 focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-foreground/15',
+      disabled && 'cursor-not-allowed opacity-40 active:scale-100'
     )}
     {disabled}
     onclick={toggle}
@@ -162,7 +162,7 @@
     </div>
 
     <svg
-      class="h-4 w-4 flex-shrink-0 text-gray-400 transition-transform duration-200 {isOpen
+      class="h-4 w-4 flex-shrink-0 text-foreground/45 transition-transform duration-180 ease-[var(--ease-out)] {isOpen
         ? 'rotate-180'
         : ''}"
       fill="none"
@@ -177,7 +177,7 @@
     <div
       data-dropdown-content
       class={cn(
-        'absolute top-full right-0 left-0 z-50 mt-1 overflow-y-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg dark:border-gray-700 dark:bg-[#111111]',
+        'dropdown-panel absolute top-full right-0 left-0 z-50 mt-1 overflow-y-auto rounded-xl border border-foreground/10 bg-background p-1 shadow-xl',
         maxHeight,
         dropdownClass
       )}
@@ -187,11 +187,9 @@
           <button
             type="button"
             class={cn(
-              'flex w-full cursor-pointer items-center justify-between px-3 py-2 text-left text-sm text-gray-900 transition-colors duration-150 hover:bg-zinc-100 focus:bg-gray-50 focus:outline-none dark:text-gray-300 dark:hover:bg-zinc-800',
-              option.value === value &&
-                'bg-zinc-100 text-gray-900 dark:bg-zinc-800 dark:text-gray-300',
-              option.disabled &&
-                'cursor-not-allowed opacity-50 hover:bg-transparent dark:hover:bg-transparent',
+              'flex min-h-10 w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-foreground outline-none transition-colors duration-150 hover:bg-primary focus-visible:bg-primary',
+              option.value === value && 'bg-primary',
+              option.disabled && 'cursor-not-allowed opacity-40 hover:bg-transparent',
               optionClass
             )}
             disabled={option.disabled}
@@ -215,3 +213,17 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .dropdown-panel {
+    transform-origin: top center;
+    animation: dropdown-in 180ms var(--ease-out);
+  }
+
+  @keyframes dropdown-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.98);
+    }
+  }
+</style>

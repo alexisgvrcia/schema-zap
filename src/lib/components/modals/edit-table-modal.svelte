@@ -21,6 +21,7 @@
   let { editTableForm, visualTables, onClose, onSaveChanges, onUpdateName }: Props = $props();
 
   function handleSaveChanges(): void {
+    if (!isValidTableName(editTableForm.name, visualTables)) return;
     onSaveChanges();
   }
 </script>
@@ -31,17 +32,14 @@
   {/snippet}
 
   <div>
-    <label
-      for="edit-table-name"
-      class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-    >
+    <label for="edit-table-name" class="mb-1.5 block text-xs font-medium text-foreground/60">
       Table name
     </label>
     <input
       id="edit-table-name"
       type="text"
       value={editTableForm.name}
-      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 outline-none focus:border-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:border-gray-100 dark:focus:ring-gray-100"
+      class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
       onkeydown={(e) => e.key === 'Enter' && handleSaveChanges()}
       oninput={(e) => onUpdateName((e.target as HTMLInputElement).value)}
     />

@@ -64,21 +64,19 @@
 
 <div
   class={cn(
-    'overflow-hidden rounded-lg border bg-white',
-    'border-gray-200 dark:border-gray-700 dark:bg-zinc-900',
+    'overflow-hidden rounded-xl border border-foreground/10 bg-background',
     isDragging && 'opacity-50',
-    isDropTarget && 'border-gray-400 bg-gray-50 dark:border-gray-500 dark:bg-gray-800/50'
+    isDropTarget && 'border-foreground/30 bg-primary/70'
   )}
   ondragover={(e) => onTableDragOver(e, tableIndex)}
   ondrop={(e) => onTableDrop(e, tableIndex)}
   role="application"
 >
-  <div class={cn('flex items-center justify-between px-3 py-2', 'bg-gray-50 dark:bg-zinc-900')}>
+  <div class="flex items-center justify-between bg-primary/55 px-3 py-2">
     <div class="flex flex-1 items-center gap-2">
       <div
         class={cn(
-          'opacity-60 transition-opacity duration-200 ease-in-out hover:opacity-100',
-          'hover:bg-zinc-200 dark:hover:bg-zinc-600'
+          'rounded opacity-50 transition-opacity duration-150 hover:bg-primary hover:opacity-100'
         )}
         title="Drag to reorder"
         draggable="true"
@@ -86,25 +84,25 @@
         ondragend={onDragEnd}
         role="application"
       >
-        <GripVertical class={cn('h-3 w-3', 'text-gray-600 dark:text-gray-400')} />
+        <GripVertical class="h-3 w-3 text-foreground/50" />
       </div>
 
       <Button
         onClick={() => onToggleExpansion(table.name)}
+        variant="ghost"
         class="flex flex-1 items-center gap-2 text-left"
+        aria-expanded={isExpanded}
       >
         {#if isExpanded}
-          <ChevronDown class={cn('h-4 w-4', 'text-gray-600 dark:text-gray-400')} />
+          <ChevronDown class="h-4 w-4 text-foreground/50" />
         {:else}
-          <ChevronRight class={cn('h-4 w-4', 'text-gray-600 dark:text-gray-400')} />
+          <ChevronRight class="h-4 w-4 text-foreground/50" />
         {/if}
-        <Database class={cn('h-4 w-4', 'text-gray-600 dark:text-gray-400')} />
-        <span class={cn('max-w-[100px] truncate font-medium', 'text-gray-900 dark:text-gray-100')}>
+        <Database class="h-4 w-4 text-foreground/50" />
+        <span class="max-w-[100px] truncate font-medium text-foreground">
           {table.name}
         </span>
-        <span class={cn('text-xs', 'text-gray-500 dark:text-gray-400')}
-          >({table.columns.length})</span
-        >
+        <span class="text-xs text-foreground/45 tabular-nums">({table.columns.length})</span>
       </Button>
     </div>
     <div class="flex items-center">
@@ -116,7 +114,7 @@
             label: 'Remove Table',
             icon: Trash2,
             onClick: () => onRemoveTable(table.name),
-            iconClass: 'text-red-500'
+            iconClass: 'text-foreground'
           }
         ]}
       />
@@ -126,16 +124,15 @@
   {#if isExpanded}
     <div class="space-y-2 p-3">
       {#if table.columns.length === 0}
-        <p class={cn('text-sm italic', 'text-gray-500 dark:text-gray-400')}>No columns defined</p>
+        <p class="text-sm italic text-foreground/45">No columns defined</p>
       {:else}
         {#each table.columns as column, columnIndex (column.name)}
           {#if dropColumnIndex === columnIndex && draggedColumnIndex !== columnIndex}
-            <div class="h-0.5 w-full rounded-full bg-black/20 dark:bg-white/20"></div>
+            <div class="h-0.5 w-full rounded-full bg-foreground/20"></div>
           {/if}
           <div
             class={cn(
-              'flex items-center justify-between rounded border p-2',
-              'border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-zinc-900',
+              'flex items-center justify-between rounded-lg border border-foreground/10 bg-background p-2',
               draggedColumnIndex === columnIndex && 'opacity-50',
               draggedColumnIndex === columnIndex && 'opacity-50'
             )}
@@ -146,8 +143,7 @@
             <div class="flex flex-1 items-center gap-2">
               <div
                 class={cn(
-                  'cursor-move rounded p-1 opacity-60 transition-opacity duration-200 ease-in-out hover:opacity-100',
-                  'hover:bg-zinc-200 dark:hover:bg-zinc-500'
+                  'cursor-move rounded p-1 opacity-50 transition-opacity duration-150 hover:bg-primary hover:opacity-100'
                 )}
                 title="Drag to reorder"
                 draggable="true"
@@ -155,14 +151,14 @@
                 ondragend={onDragEnd}
                 role="application"
               >
-                <GripVertical class={cn('h-3 w-3', 'text-gray-600 dark:text-gray-400')} />
+                <GripVertical class="h-3 w-3 text-foreground/50" />
               </div>
 
               <div class="flex flex-col">
-                <span class={cn('font-mono text-sm', 'text-gray-900 dark:text-gray-100')}>
+                <span class="font-mono text-sm text-foreground">
                   {column.name}
                 </span>
-                <span class={cn('font-mono text-xs', 'text-gray-500 dark:text-gray-400')}>
+                <span class="font-mono text-xs text-foreground/45">
                   {column.type}
                 </span>
               </div>

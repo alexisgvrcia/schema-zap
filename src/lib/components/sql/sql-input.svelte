@@ -269,13 +269,13 @@
   });
 </script>
 
-<div class="relative flex-1 overflow-hidden bg-white dark:bg-[#111111]">
+<div class="relative flex-1 overflow-hidden bg-background">
   <pre bind:this={codeElement}><code class="sql-highlighted"></code></pre>
 
   <textarea
     id="sql-textarea"
     bind:this={textareaElement}
-    class="placeholder:text-gray-400 dark:placeholder:text-gray-500"
+    class="placeholder:text-foreground/35"
     {value}
     {placeholder}
     {disabled}
@@ -283,91 +283,42 @@
     onkeydown={handleKeyDown}
     onscroll={syncScroll}
     spellcheck="false"
-  ></textarea>
+    aria-label="SQL schema editor"></textarea>
 </div>
 
 <style>
   #sql-textarea:focus {
     outline: none;
-    box-shadow: inset 0 0 0 2px #6b7280;
+    box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--foreground) 22%, transparent);
   }
 
-  :global(.sql-keyword) {
-    color: #6b7280;
-    font-weight: 700;
-  }
-  :global(.dark .sql-keyword) {
-    color: #9ca3af;
-    font-weight: 700;
-  }
-
+  :global(.sql-keyword),
   :global(.sql-type) {
-    color: #6b7280;
-    font-weight: 600;
+    color: var(--foreground);
+    font-weight: 700;
   }
 
-  :global(.dark .sql-type) {
-    color: #9ca3af;
-    font-weight: 600;
-  }
-
-  :global(.sql-string) {
-    color: #7f1d1d;
-  }
-  :global(.dark .sql-string) {
-    color: #f87171;
-  }
-
-  :global(.sql-number) {
-    color: #4b5563;
-  }
-  :global(.dark .sql-number) {
-    color: #9ca3af;
+  :global(.sql-string),
+  :global(.sql-number),
+  :global(.sql-operator) {
+    color: color-mix(in oklab, var(--foreground) 72%, transparent);
   }
 
   :global(.sql-comment) {
-    color: #6b7280;
+    color: var(--foreground);
     font-style: italic;
     font-weight: 400;
     opacity: 0.6;
   }
-  :global(.dark .sql-comment) {
-    color: #9ca3af;
-    font-style: italic;
-    font-weight: 400;
-    opacity: 0.6;
-  }
-
-  :global(.sql-paren) {
-    color: #000000;
-    font-weight: 600;
-  }
-  :global(.dark .sql-paren) {
-    color: #ffffff;
-    font-weight: 600;
-  }
-
-  :global(.sql-operator) {
-    color: #4338ca;
-    font-weight: 600;
-  }
-  :global(.dark .sql-operator) {
-    color: #818cf8;
-    font-weight: 600;
-  }
-
-  :global(.sql-identifier) {
-    color: #000000;
-  }
-  :global(.dark .sql-identifier) {
-    color: #ffffff;
-  }
-
+  :global(.sql-paren),
+  :global(.sql-identifier),
   :global(.sql-text) {
-    color: #111827;
+    color: var(--foreground);
   }
-  :global(.dark .sql-text) {
-    color: #f9fafb;
+
+  :global(.sql-paren),
+  :global(.sql-operator) {
+    font-weight: 600;
   }
 
   :global(.sql-highlighted) {
@@ -402,19 +353,22 @@
   }
 
   :global(.sql-error-statement) {
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: color-mix(in oklab, var(--foreground) 10%, transparent);
     border-radius: 2px;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 3px;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
 
   :global(.sql-keyword.sql-error-statement) {
-    color: #dc2626;
-    background-color: rgba(239, 68, 68, 0.15);
+    color: var(--foreground);
+    background-color: color-mix(in oklab, var(--foreground) 14%, transparent);
   }
 
   :global(.sql-identifier.sql-error-statement) {
-    background-color: rgba(239, 68, 68, 0.12);
+    background-color: color-mix(in oklab, var(--foreground) 12%, transparent);
   }
 
   pre {
@@ -454,7 +408,7 @@
     right: 0 !important;
     bottom: 0 !important;
     z-index: 2 !important;
-    caret-color: #374151 !important;
+    caret-color: var(--foreground) !important;
     color: transparent !important;
     background: transparent !important;
     font-family: 'JetBrains Mono Variable', monospace !important;
@@ -478,15 +432,15 @@
   }
 
   #sql-textarea::selection {
-    background: rgba(107, 114, 128, 0.3);
+    background: color-mix(in oklab, var(--foreground) 20%, transparent);
   }
 
   #sql-textarea:placeholder-shown {
-    color: #9ca3af;
+    color: color-mix(in oklab, var(--foreground) 35%, transparent);
   }
 
   #sql-textarea:focus:not(:placeholder-shown) {
-    color: rgba(55, 65, 81, 0.1);
+    color: color-mix(in oklab, var(--foreground) 8%, transparent);
   }
 
   #sql-textarea::-webkit-scrollbar,
@@ -502,22 +456,12 @@
 
   #sql-textarea::-webkit-scrollbar-thumb,
   pre::-webkit-scrollbar-thumb {
-    background-color: #d4d4d8;
+    background-color: color-mix(in oklab, var(--foreground) 18%, transparent);
     border-radius: 9999px;
-  }
-
-  :global(.dark) #sql-textarea::-webkit-scrollbar-thumb,
-  :global(.dark) pre::-webkit-scrollbar-thumb {
-    background-color: #3f3f46;
   }
 
   #sql-textarea::-webkit-scrollbar-thumb:hover,
   pre::-webkit-scrollbar-thumb:hover {
-    background-color: #a1a1aa;
-  }
-
-  :global(.dark) #sql-textarea::-webkit-scrollbar-thumb:hover,
-  :global(.dark) pre::-webkit-scrollbar-thumb:hover {
-    background-color: #52525b;
+    background-color: color-mix(in oklab, var(--foreground) 28%, transparent);
   }
 </style>

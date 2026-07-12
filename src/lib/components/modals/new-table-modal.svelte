@@ -15,7 +15,7 @@
   let newTableName = $state('');
 
   function handleAddTable(): void {
-    if (!newTableName.trim()) return;
+    if (!isValidTableName(newTableName, visualTables)) return;
     onAddTable(newTableName.trim());
     newTableName = '';
   }
@@ -26,21 +26,21 @@
   }
 </script>
 
-<Modal {open} size="md" {onClose}>
+<Modal {open} size="md" onClose={handleClose}>
   {#snippet title()}
     <span>New Table</span>
   {/snippet}
 
   <div>
-    <label for="table-name" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
+    <label for="table-name" class="mb-1.5 block text-xs font-medium text-foreground/60">
       Table name
     </label>
     <input
       id="table-name"
       type="text"
       bind:value={newTableName}
-      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 outline-none focus:border-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:border-gray-100 dark:focus:ring-gray-100"
-      placeholder="usuarios, productos, etc."
+      class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
+      placeholder="users, products, etc."
       onkeydown={(e) => e.key === 'Enter' && handleAddTable()}
     />
   </div>

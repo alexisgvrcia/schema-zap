@@ -25,13 +25,10 @@
   }: Props = $props();
 
   const variantClasses = {
-    default:
-      'bg-zinc-900 text-white hover:bg-zinc-700 disabled:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600',
-    ghost:
-      'bg-transparent text-gray-600 hover:bg-zinc-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-zinc-700 dark:hover:text-white',
-    icon: 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white',
-    table:
-      'text-gray-600 hover:bg-zinc-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-zinc-600 dark:hover:text-gray-200'
+    default: 'bg-foreground text-background hover:bg-foreground/80',
+    ghost: 'bg-transparent text-foreground/70 hover:bg-primary hover:text-foreground',
+    icon: 'text-foreground/65 hover:bg-primary hover:text-foreground',
+    table: 'text-foreground/65 hover:bg-primary hover:text-foreground'
   };
 
   const sizeClasses = {
@@ -42,12 +39,12 @@
 
   const baseClasses = {
     default:
-      'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500',
+      'inline-flex cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100',
     ghost:
-      'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500',
-    icon: 'cursor-pointer rounded-lg transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500',
+      'inline-flex cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100',
+    icon: 'flex min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-lg outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100',
     table:
-      'cursor-pointer rounded transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500'
+      'flex cursor-pointer items-center justify-center rounded outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/30 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100'
   };
 </script>
 
@@ -55,6 +52,7 @@
   class={cn(baseClasses[variant], variantClasses[variant], sizeClasses[size])}
   {type}
   {title}
+  aria-label={title || undefined}
   {disabled}
   onclick={onClick}
   {...restProps}

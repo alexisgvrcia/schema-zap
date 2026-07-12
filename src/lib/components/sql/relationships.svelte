@@ -208,7 +208,8 @@
 
                 <path
                   d={manyToMany.path1}
-                  stroke="#6b7280"
+                  stroke="var(--foreground)"
+                  stroke-opacity="0.45"
                   stroke-width="2"
                   stroke-dasharray="10,1"
                   fill="none"
@@ -217,7 +218,8 @@
 
                 <path
                   d={manyToMany.path2}
-                  stroke="#6b7280"
+                  stroke="var(--foreground)"
+                  stroke-opacity="0.45"
                   stroke-width="2"
                   stroke-dasharray="10,1"
                   fill="none"
@@ -233,19 +235,18 @@
                     width="30"
                     height="16"
                     rx="8"
-                    fill="white"
-                    stroke="#6b7280"
+                    fill="var(--background)"
+                    stroke="var(--foreground)"
                     stroke-width="1"
                     opacity="0.95"
-                    class="dark:fill-gray-800"
                   />
                   <text
                     text-anchor="middle"
                     dominant-baseline="middle"
-                    fill="#6b7280"
+                    fill="var(--foreground)"
                     font-size="10"
                     font-weight="600"
-                    class="select-none dark:fill-gray-100"
+                    class="select-none"
                   >
                     N:M
                   </text>
@@ -260,19 +261,18 @@
                     width="30"
                     height="16"
                     rx="8"
-                    fill="white"
-                    stroke="#6b7280"
+                    fill="var(--background)"
+                    stroke="var(--foreground)"
                     stroke-width="1"
                     opacity="0.95"
-                    class="dark:fill-gray-800"
                   />
                   <text
                     text-anchor="middle"
                     dominant-baseline="middle"
-                    fill="#6b7280"
+                    fill="var(--foreground)"
                     font-size="10"
                     font-weight="600"
-                    class="select-none dark:fill-gray-100"
+                    class="select-none"
                   >
                     N:M
                   </text>
@@ -285,7 +285,8 @@
 
               <path
                 d={orthogonalPath}
-                stroke="#6b7280"
+                stroke="var(--foreground)"
+                stroke-opacity="0.45"
                 stroke-width="2"
                 stroke-dasharray="10,1"
                 fill="none"
@@ -301,19 +302,18 @@
                   width="50"
                   height="20"
                   rx="10"
-                  fill="white"
-                  stroke="#6b7280"
+                  fill="var(--background)"
+                  stroke="var(--foreground)"
                   stroke-width="1"
                   opacity="0.9"
-                  class="dark:fill-gray-800"
                 />
                 <text
                   text-anchor="middle"
                   dominant-baseline="middle"
-                  fill="#6b7280"
+                  fill="var(--foreground)"
                   font-size="12"
                   font-weight="600"
-                  class="select-none dark:fill-gray-100"
+                  class="select-none"
                 >
                   {relationship.type === 'one-to-one' ? '1:1' : '1:N'}
                 </text>

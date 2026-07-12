@@ -340,7 +340,7 @@
 <div
   bind:this={canvasElement}
   class={cn(
-    'canvas-container relative h-full w-full overflow-hidden bg-gray-50 focus:outline-none dark:bg-[#111111]/50',
+    'canvas-container relative h-full w-full overflow-hidden bg-background focus:outline-none',
     isDragging ? 'cursor-grabbing' : 'cursor-grab'
   )}
   onwheel={handleWheel}

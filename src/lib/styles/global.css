@@ -3,18 +3,72 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  color-scheme: light;
+  --background: oklch(0.995 0 0);
+  --foreground: oklch(0.19 0.004 286);
+  --primary: oklch(0.955 0.003 286);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0.004 286);
+  --foreground: oklch(0.94 0.003 286);
+  --primary: oklch(0.225 0.006 286);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    background: var(--background);
+    color: var(--foreground);
+    transition:
+      background-color 180ms var(--ease-out),
+      color 180ms var(--ease-out);
   }
 
   body {
-    font-family: 'JetBrains Mono Variable', sans-serif !important;
+    min-width: 20rem;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'JetBrains Mono Variable', monospace;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    transition:
+      background-color 180ms var(--ease-out),
+      color 180ms var(--ease-out);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--foreground) 18%, transparent);
   }
 }
 
@@ -24,5 +78,27 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .backdrop-blur-md,
+  .backdrop-blur-sm {
+    backdrop-filter: none;
   }
 }

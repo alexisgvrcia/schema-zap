@@ -48,20 +48,24 @@
 
 <header
   class={cn(
-    'flex flex-shrink-0 items-center justify-between border-b px-3 py-3 shadow-sm sm:px-6 sm:py-4',
-    'border-gray-200 bg-white dark:border-gray-700 dark:bg-[#111111]'
+    'flex h-14 flex-shrink-0 items-center justify-between border-b px-3 sm:px-5',
+    'border-foreground/10 bg-background/90 backdrop-blur-md'
   )}
 >
   <div class="flex items-center gap-2 md:gap-3">
-    <img src="/icon.svg" alt="SchemaZap Logo" class="h-8 w-8" />
-    <span class="text-lg font-bold text-gray-900 md:text-xl dark:text-gray-300">SchemaZap</span>
+    <img src="/icon.svg" alt="" class="h-7 w-7" />
+    <span class="text-base font-semibold tracking-tight text-foreground md:text-lg">SchemaZap</span>
   </div>
 
   <div class="flex items-center gap-1 md:gap-2">
-    <a href="https://github.com/alexisgvrcia/schema-zap" target="_blank" rel="noopener noreferrer">
-      <Button variant="icon" size="sm" title="Github Repository">
-        <GithubIcon class="h-4 w-4" />
-      </Button>
+    <a
+      class="flex min-h-10 min-w-10 items-center justify-center rounded-lg text-foreground/65 outline-none transition-[color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] hover:bg-primary hover:text-foreground focus-visible:ring-2 focus-visible:ring-foreground/30"
+      href="https://github.com/alexisgvrcia/schema-zap"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub repository"
+    >
+      <GithubIcon class="h-4 w-4" />
     </a>
 
     <ToggleTheme />

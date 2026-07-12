@@ -39,18 +39,7 @@
   const dialects = Object.values(SQLDialect);
 
   function getDialectColor(dialect: SQLDialect): string {
-    switch (dialect) {
-      case SQLDialect.MYSQL:
-        return 'text-orange-600';
-      case SQLDialect.POSTGRESQL:
-        return 'text-blue-600';
-      case SQLDialect.SQLITE:
-        return 'text-gray-600';
-      case SQLDialect.MARIADB:
-        return 'text-green-600';
-      default:
-        return 'text-gray-500';
-    }
+    return dialect ? 'text-foreground/55' : 'text-foreground/40';
   }
 
   let currentDialect = $state($selectedDialect);
@@ -113,10 +102,7 @@
 
 <div class="flex h-full flex-col">
   <div class="mb-3 flex-shrink-0">
-    <label
-      for="sql-dialect-selector"
-      class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-    >
+    <label for="sql-dialect-selector" class="mb-1.5 block text-xs font-medium text-foreground/60">
       SQL Dialect
     </label>
 
@@ -137,20 +123,21 @@
   </div>
 
   <div
-    class="flex flex-1 flex-col overflow-hidden rounded-lg border border-gray-300 bg-white shadow-sm dark:border-gray-600 dark:bg-gray-800"
+    class="flex flex-1 flex-col overflow-hidden rounded-xl border border-foreground/10 bg-background shadow-sm"
   >
     <div
-      class="flex flex-shrink-0 items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-3 dark:border-gray-600 dark:bg-[#111111]/60"
+      class="flex flex-shrink-0 items-center justify-between border-b border-foreground/10 bg-primary/60 px-3 py-2"
+      aria-live="polite"
     >
       <div class="flex min-w-0 flex-1 items-center gap-2 text-xs">
         {#if isParsingError}
-          <CircleAlert class="h-4 w-4 flex-shrink-0 text-red-500 dark:text-red-400" />
-          <span class="truncate text-gray-600 dark:text-gray-300">{errorMessage}</span>
+          <CircleAlert class="h-4 w-4 flex-shrink-0 text-foreground" />
+          <span class="truncate text-foreground/70">{errorMessage}</span>
         {:else if isValidSQL}
-          <Check class="h-4 w-4 flex-shrink-0 text-green-500 dark:text-green-400" />
-          <span class="text-gray-600 dark:text-gray-300">Valid SQL</span>
+          <Check class="h-4 w-4 flex-shrink-0 text-foreground" />
+          <span class="text-foreground/65">Valid SQL</span>
         {:else}
-          <span class="text-gray-600 dark:text-gray-300">Enter Schema SQL</span>
+          <span class="text-foreground/50">Enter schema SQL</span>
         {/if}
       </div>
 

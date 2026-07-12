@@ -64,8 +64,8 @@
     {id}
     type="button"
     class={cn(
-      'flex items-center justify-center rounded-lg border border-gray-200 bg-gray-50 p-2 text-sm text-gray-900 transition-all duration-200 hover:border-gray-400 focus:border-gray-500 focus:ring-2 focus:ring-gray-500/50 focus:outline-none dark:border-gray-700 dark:bg-[#111111] dark:text-gray-300 dark:hover:border-gray-500',
-      disabled && 'cursor-not-allowed opacity-50'
+      'flex min-h-10 min-w-10 items-center justify-center rounded-lg border border-foreground/10 bg-primary p-2 text-sm text-foreground outline-none transition-[border-color,background-color,transform] duration-150 ease-[var(--ease-out)] active:scale-[0.96] hover:border-foreground/20 focus-visible:ring-2 focus-visible:ring-foreground/20',
+      disabled && 'cursor-not-allowed opacity-40 active:scale-100'
     )}
     {disabled}
     onclick={toggle}
@@ -80,7 +80,7 @@
     <div
       data-menu-panel
       class={cn(
-        'absolute top-full right-0 z-50 mt-1 overflow-y-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg dark:border-gray-700 dark:bg-[#111111]',
+        'menu-panel absolute top-full right-0 z-50 mt-1 overflow-y-auto rounded-xl border border-foreground/10 bg-background p-1 shadow-xl',
         maxHeight,
         panelClass
       )}
@@ -90,9 +90,8 @@
           <button
             type="button"
             class={cn(
-              'flex w-full cursor-pointer items-center gap-3 px-3 py-2 text-left text-sm text-gray-900 transition-colors duration-150 hover:bg-zinc-100 focus:bg-zinc-50 focus:outline-none dark:text-gray-300 dark:hover:bg-zinc-700',
-              option.disabled &&
-                'cursor-not-allowed opacity-50 hover:bg-transparent dark:hover:bg-transparent',
+              'flex min-h-10 w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-left text-sm text-foreground outline-none transition-colors duration-150 hover:bg-primary focus-visible:bg-primary',
+              option.disabled && 'cursor-not-allowed opacity-40 hover:bg-transparent',
               optionClass
             )}
             onclick={() => {
@@ -115,3 +114,17 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .menu-panel {
+    transform-origin: top right;
+    animation: menu-in 180ms var(--ease-out);
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.97);
+    }
+  }
+</style>

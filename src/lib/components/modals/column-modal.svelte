@@ -2,7 +2,7 @@
   import Modal from '$lib/components/ui/modal.svelte';
   import Button from '$lib/components/ui/button.svelte';
   import Dropdown from '$lib/components/ui/dropdown.svelte';
-  import { selectedDialect, schema } from '$lib/stores/app';
+  import { selectedDialect } from '$lib/stores/app';
   import { SQL_DATA_TYPES } from '$lib/constants';
   import {
     requiresLength,
@@ -43,6 +43,7 @@
   const SQL_TYPES = $derived(SQL_DATA_TYPES[$selectedDialect]);
 
   function handleSaveColumn(): void {
+    if (!isColumnValid) return;
     onSaveColumn();
   }
 
@@ -83,6 +84,21 @@
       label: `${pk.table}.${pk.column} (${pk.type}${pk.length ? `(${pk.length})` : ''})`
     }))
   ]);
+
+  const isColumnValid = $derived(
+    Boolean(columnForm.name.trim()) &&
+      Boolean(columnForm.type) &&
+      !visualTables.some(
+        (table) =>
+          table.name === columnForm.tableName &&
+          table.columns.some(
+            (column) =>
+              column.name.toLowerCase() === columnForm.name.trim().toLowerCase() &&
+              (!columnForm.isEdit || column.name !== columnForm.originalName)
+          )
+      ) &&
+      (!requiresLength(columnForm.type, $selectedDialect) || Boolean(columnForm.length))
+  );
 </script>
 
 <Modal {open} size="lg" {onClose}>
@@ -91,28 +107,22 @@
   {/snippet}
 
   <div>
-    <label
-      for="column-name"
-      class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-    >
+    <label for="column-name" class="mb-1.5 block text-xs font-medium text-foreground/60">
       Column name
     </label>
     <input
       id="column-name"
       type="text"
       value={columnForm.name}
-      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 outline-none focus:border-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:border-gray-100 dark:focus:ring-gray-100"
-      placeholder="id, nombre, email, etc."
+      class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
+      placeholder="id, name, email, etc."
       onkeydown={(e) => e.key === 'Enter' && handleSaveColumn()}
       oninput={(e) => updateField('name', (e.target as HTMLInputElement).value)}
     />
   </div>
 
   <div>
-    <label
-      for="column-type"
-      class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-    >
+    <label for="column-type" class="mb-1.5 block text-xs font-medium text-foreground/60">
       Data type
     </label>
     <Dropdown
@@ -127,10 +137,7 @@
 
   {#if columnForm.type && canHaveLength(columnForm.type, $selectedDialect)}
     <div>
-      <label
-        for="column-length"
-        class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
+      <label for="column-length" class="mb-1.5 block text-xs font-medium text-foreground/60">
         Length {requiresLength(columnForm.type, $selectedDialect) ? '(required)' : '(optional)'}
       </label>
       <input
@@ -139,8 +146,8 @@
         min="1"
         max="65535"
         value={columnForm.length || ''}
-        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 outline-none focus:border-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-600 dark:bg-zinc-900 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:border-gray-100 dark:focus:ring-gray-100"
-        placeholder="Ej: 255, 50, 100..."
+        class="w-full rounded-lg border border-foreground/12 bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-foreground/35 focus:border-foreground/30 focus:ring-2 focus:ring-foreground/15"
+        placeholder="e.g. 255, 50, 100"
         required={requiresLength(columnForm.type, $selectedDialect)}
         oninput={(e) => {
           const target = e.target as HTMLInputElement;
@@ -149,6 +156,7 @@
           updateField('length', isNaN(numValue) ? undefined : numValue);
         }}
         onkeydown={(e) => {
+          if (e.ctrlKey || e.metaKey) return;
           const allowedKeys = [
             'Backspace',
             'Delete',
@@ -166,93 +174,88 @@
         }}
       />
       {#if requiresLength(columnForm.type, $selectedDialect) && (!columnForm.length || columnForm.length <= 0)}
-        <p class="mt-1 text-xs text-red-600 dark:text-red-400">
-          This data type requires specifying a length
-        </p>
+        <p class="mt-1 text-xs text-foreground/65">This data type requires specifying a length</p>
       {/if}
     </div>
   {/if}
 
   <div class="grid grid-cols-2 gap-4">
     <label
-      class="flex cursor-pointer items-center gap-2 rounded-lg p-2 hover:bg-zinc-100 {tableHasPrimaryKey(
+      class="flex cursor-pointer items-center gap-2 rounded-lg p-2 transition-colors duration-150 hover:bg-primary {tableHasPrimaryKey(
         columnForm.tableName,
         visualTables,
         columnForm.originalName
       ) && !columnForm.primaryKey
         ? 'opacity-50'
-        : ''} dark:hover:bg-zinc-700"
+        : ''}"
     >
       <input
         type="checkbox"
         checked={columnForm.primaryKey}
-        class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-gray-900 accent-gray-900 focus:ring-2 focus:ring-gray-500 dark:border-gray-500 dark:bg-gray-600 dark:text-gray-100 dark:accent-gray-100"
+        class="h-4 w-4 accent-foreground focus:ring-2 focus:ring-foreground/20"
         disabled={tableHasPrimaryKey(columnForm.tableName, visualTables, columnForm.originalName) &&
           !columnForm.primaryKey}
         onchange={(e) => updateField('primaryKey', (e.target as HTMLInputElement).checked)}
       />
-      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+      <span class="text-sm font-medium text-foreground/70">
         Primary Key
         {#if tableHasPrimaryKey(columnForm.tableName, visualTables, columnForm.originalName) && !columnForm.primaryKey}
-          <span class="block text-xs text-gray-500">(Already exists a PK in this table)</span>
+          <span class="block text-xs text-foreground/45">(A primary key already exists)</span>
         {/if}
       </span>
     </label>
 
     {#if isFeatureSupported('autoIncrement', $selectedDialect)}
       <label
-        class="flex cursor-pointer items-center gap-2 rounded-lg p-2 hover:bg-zinc-100 {!columnForm.primaryKey
+        class="flex cursor-pointer items-center gap-2 rounded-lg p-2 transition-colors duration-150 hover:bg-primary {!columnForm.primaryKey
           ? 'opacity-50'
-          : ''} dark:hover:bg-zinc-700"
+          : ''}"
       >
         <input
           type="checkbox"
           checked={columnForm.autoIncrement}
-          class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-gray-900 accent-gray-900 focus:ring-2 focus:ring-gray-900 dark:border-gray-500 dark:bg-gray-600 dark:text-gray-100 dark:accent-gray-100 dark:focus:ring-gray-100"
+          class="h-4 w-4 accent-foreground focus:ring-2 focus:ring-foreground/20"
           disabled={!columnForm.primaryKey}
           onchange={(e) => updateField('autoIncrement', (e.target as HTMLInputElement).checked)}
         />
-        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Auto Increment</span>
+        <span class="text-sm font-medium text-foreground/70">Auto Increment</span>
       </label>
     {/if}
 
     <label
-      class="flex cursor-pointer items-center gap-2 rounded-lg p-2 hover:bg-zinc-100 {columnForm.primaryKey
+      class="flex cursor-pointer items-center gap-2 rounded-lg p-2 transition-colors duration-150 hover:bg-primary {columnForm.primaryKey
         ? 'opacity-50'
-        : ''} dark:hover:bg-zinc-700"
+        : ''}"
     >
       <input
         type="checkbox"
         checked={columnForm.nullable}
-        class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-gray-900 accent-gray-900 focus:ring-2 focus:ring-gray-500 dark:border-gray-500 dark:bg-gray-600 dark:text-gray-100 dark:accent-gray-100"
+        class="h-4 w-4 accent-foreground focus:ring-2 focus:ring-foreground/20"
         disabled={columnForm.primaryKey}
         onchange={(e) => updateField('nullable', (e.target as HTMLInputElement).checked)}
       />
-      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Nullable</span>
+      <span class="text-sm font-medium text-foreground/70">Nullable</span>
     </label>
 
     <label
-      class="flex cursor-pointer items-center gap-2 rounded-lg p-2 hover:bg-zinc-100 {columnForm.primaryKey
+      class="flex cursor-pointer items-center gap-2 rounded-lg p-2 transition-colors duration-150 hover:bg-primary {columnForm.primaryKey
         ? 'opacity-50'
-        : ''} dark:hover:bg-zinc-700"
+        : ''}"
     >
       <input
         type="checkbox"
         checked={columnForm.unique}
-        class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-gray-900 accent-gray-900 focus:ring-2 focus:ring-gray-500 dark:border-gray-500 dark:bg-gray-600 dark:text-gray-100 dark:accent-gray-100"
+        class="h-4 w-4 accent-foreground focus:ring-2 focus:ring-foreground/20"
         disabled={columnForm.primaryKey}
         onchange={(e) => updateField('unique', (e.target as HTMLInputElement).checked)}
       />
-      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Unique</span>
+      <span class="text-sm font-medium text-foreground/70">Unique</span>
     </label>
   </div>
 
   <div>
     {#if columnForm.type && compatiblePKs.length > 0}
-      <label
-        for="foreign-key-select"
-        class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
+      <label for="foreign-key-select" class="mb-1.5 block text-xs font-medium text-foreground/60">
         Foreign Key
       </label>
       <Dropdown
@@ -270,25 +273,7 @@
 
   {#snippet footer()}
     <Button variant="ghost" onClick={onClose}>Cancel</Button>
-    <Button
-      variant="default"
-      onClick={handleSaveColumn}
-      disabled={!columnForm.name.trim() ||
-        $schema.tables.some((t) => {
-          return (
-            t.name === columnForm.tableName &&
-            t.columns.some(
-              (c) =>
-                c.name.toLowerCase() === columnForm.name.toLowerCase() &&
-                ((columnForm.isEdit && columnForm.originalName !== columnForm.name.toLowerCase()) ||
-                  !columnForm.isEdit)
-            )
-          );
-        }) ||
-        !columnForm.type ||
-        (requiresLength(columnForm.type, $selectedDialect) &&
-          (!columnForm.length || columnForm.length <= 0))}
-    >
+    <Button variant="default" onClick={handleSaveColumn} disabled={!isColumnValid}>
       {columnForm.isEdit ? 'Save' : 'Add'} Column
     </Button>
   {/snippet}

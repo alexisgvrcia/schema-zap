@@ -125,11 +125,10 @@
 <div
   id="table-{table.name.toLowerCase()}"
   class={cn(
-    'table-node max-w-96 min-w-[290px] rounded-lg border transition-all duration-500 ease-out select-none',
-    'bg-white/90 dark:bg-black/90',
+    'table-node max-w-96 min-w-[290px] rounded-xl border bg-background/95 select-none',
     isDragging && 'dragging',
-    !isSelected && !isDragging && 'border-white/30 shadow-sm dark:border-gray-600',
-    isSelected && 'border-black/20 shadow-none dark:border-white/20'
+    !isSelected && !isDragging && 'border-foreground/10 shadow-lg',
+    isSelected && 'border-foreground/30 shadow-none'
   )}
   style="transform: {isDragging
     ? 'translate3d(0, 0, 0) rotate(1deg) scale(1.05)'
@@ -143,45 +142,38 @@
 >
   {#if isSelected}
     <div
-      class="pointer-events-none absolute inset-0 animate-pulse rounded-lg border-2 border-black/20 dark:border-white/20"
+      class="pointer-events-none absolute inset-0 rounded-xl border-2 border-foreground/20"
     ></div>
   {/if}
   <div
     class={cn(
-      'flex items-center justify-between rounded-t-lg border-b px-4 py-3',
-      'border-gray-600/5 bg-white/90 dark:border-gray-600/50 dark:bg-black/90'
+      'flex items-center justify-between rounded-t-xl border-b border-foreground/10 bg-primary/55 px-4 py-3'
     )}
   >
     <div class="flex items-center gap-2">
-      <TableIcon class={cn('h-4 w-4', 'text-gray-600 dark:text-gray-400')} />
+      <TableIcon class="h-4 w-4 text-foreground/55" />
       <h3
         class={cn(
           'max-w-40 min-w-40 overflow-hidden font-semibold overflow-ellipsis whitespace-nowrap',
-          'text-gray-900 dark:text-gray-100'
+          'text-foreground'
         )}
         title={table.name}
       >
         {table.name}
       </h3>
     </div>
-    <div class={cn('ml-2 flex-shrink-0 text-xs', 'text-gray-500 dark:text-gray-400')}>
+    <div class="ml-2 flex-shrink-0 text-xs text-foreground/45 tabular-nums">
       ({table.columns.length})
     </div>
   </div>
 
-  <div
-    class={cn(
-      'table-columns max-h-[60vh] overflow-y-auto border-t',
-      'border-gray-600/5 dark:border-gray-600/50'
-    )}
-  >
+  <div class={cn('table-columns max-h-[60vh] overflow-y-auto')}>
     {#each table.columns as column, index (index)}
       {@const IconComponent = getColumnTypeIcon(column)}
       <div
         class={cn(
-          'px-4 py-2 transition-colors duration-150',
-          'bg-white/50 hover:bg-white/70 dark:bg-black/90 dark:hover:bg-zinc-900',
-          index > 0 && 'border-t border-gray-600/5 dark:border-gray-600/50'
+          'bg-background/80 px-4 py-2 transition-colors duration-150 hover:bg-primary/60',
+          index > 0 && 'border-t border-foreground/8'
         )}
         title="Column: {column.name} ({column.type}){column.nullable
           ? ''
@@ -190,33 +182,23 @@
         <div class="flex items-center justify-between">
           <div class="min-w-0 flex-1">
             <div class="flex items-center gap-2">
-              <IconComponent class={cn('h-3 w-3', 'text-gray-600 dark:text-gray-400')} />
+              <IconComponent class="h-3 w-3 text-foreground/50" />
               <span
                 class={cn(
                   'max-w-40 min-w-40 overflow-hidden text-sm text-ellipsis whitespace-nowrap',
-                  'text-gray-900 dark:text-gray-100',
+                  'text-foreground',
                   column.primaryKey && 'font-semibold'
                 )}
               >
                 {column.name}
               </span>
             </div>
-            <div
-              class={cn(
-                'flex items-center gap-2 font-mono text-xs',
-                'text-gray-600 dark:text-gray-400'
-              )}
-            >
+            <div class={cn('flex items-center gap-2 font-mono text-xs', 'text-foreground/55')}>
               <span class="truncate">
                 {formatColumnType(column.type)}
               </span>
               {#if column.foreignKey}
-                <span
-                  class={cn(
-                    'flex flex-shrink-0 items-center gap-1',
-                    'text-gray-600 dark:text-gray-400'
-                  )}
-                >
+                <span class={cn('flex flex-shrink-0 items-center gap-1', 'text-foreground/55')}>
                   <Link class="h-2.5 w-2.5" />
                   → {column.foreignKey.table}.{column.foreignKey.column}
                 </span>
@@ -235,7 +217,7 @@
 
         {#if column.defaultValue}
           <div class="mt-1 pl-5">
-            <span class={cn('text-xs', 'text-gray-500 dark:text-gray-400')}>
+            <span class="text-xs text-foreground/45">
               Default: <span class="font-mono">{column.defaultValue}</span>
             </span>
           </div>
@@ -255,9 +237,9 @@
 
   .table-node:not(.dragging) {
     transition:
-      transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform 200ms var(--ease-in-out),
+      box-shadow 180ms var(--ease-out),
+      border-color 180ms var(--ease-out);
   }
 
   .dragging {
@@ -274,15 +256,15 @@
   }
 
   :global(.table-columns::-webkit-scrollbar-track) {
-    background: #f1f5f9;
+    background: transparent;
   }
 
   :global(.table-columns::-webkit-scrollbar-thumb) {
-    background: #cbd5e1;
+    background: color-mix(in oklab, var(--foreground) 18%, transparent);
     border-radius: 2px;
   }
 
   :global(.table-columns::-webkit-scrollbar-thumb:hover) {
-    background: #94a3b8;
+    background: color-mix(in oklab, var(--foreground) 28%, transparent);
   }
 </style>

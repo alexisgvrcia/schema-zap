@@ -6,7 +6,7 @@
   const { children } = $props();
 </script>
 
-<ModeWatcher />
+<ModeWatcher defaultMode="system" />
 {@render children()}
 <Toaster
   theme={mode.current === 'dark' ? 'dark' : 'light'}
@@ -16,12 +16,10 @@
     unstyled: true,
     classes: {
       toast: `
-        flex gap-2 p-4 rounded-xl text-sm border border-gray-300 dark:border-zinc-700
-        shadow-md backdrop-blur-md
-        bg-gray-100 bg-opacity-70 dark:bg-zinc-900 dark:bg-opacity-70
-        text-gray-900 dark:text-zinc-100
+        flex gap-2 rounded-xl border border-foreground/10 bg-background/90 p-4
+        text-sm text-foreground shadow-lg backdrop-blur-md
       `,
-      description: 'text-gray-700 dark:text-zinc-300'
+      description: 'text-foreground/60'
     }
   }}
 />

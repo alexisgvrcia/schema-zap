@@ -15,9 +15,7 @@ export function getBackground(
   const zoomOpacity = Math.min(1, canvas.zoom * 0.5);
   const finalOpacity = baseOpacity * zoomOpacity;
 
-  const gridColor = darkMode
-    ? `rgba(255,255,255,${finalOpacity.toFixed(3)})`
-    : `rgba(0,0,0,${finalOpacity.toFixed(3)})`;
+  const gridColor = `color-mix(in oklab, var(--foreground) ${(finalOpacity * 100).toFixed(1)}%, transparent)`;
 
   return {
     backgroundImage: `radial-gradient(circle, ${gridColor} ${dotSize}px, transparent ${dotSize}px)`,

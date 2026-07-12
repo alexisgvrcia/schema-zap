@@ -366,10 +366,10 @@
 
 <div class="flex h-full flex-col">
   <div
-    class="mb-4 flex flex-shrink-0 items-center justify-between border-b border-gray-200 pb-2 dark:border-gray-600"
+    class="mb-4 flex flex-shrink-0 items-center justify-between border-b border-foreground/10 pb-2"
   >
     <div class="flex items-center gap-4">
-      <span class="text-sm font-medium text-gray-900 dark:text-gray-100">Schema Editor</span>
+      <span class="text-sm font-medium text-foreground">Schema Editor</span>
     </div>
     <div class="flex items-center gap-2">
       <Button variant="icon" size="sm" onClick={() => (showNewTableForm = true)} title="Add table">
@@ -389,19 +389,19 @@
 
   <div class="custom-scrollbar min-h-0 flex-1 overflow-y-auto">
     {#if visualTables.length === 0}
-      <div class="py-8 text-center text-gray-500 dark:text-gray-400">
+      <div class="py-8 text-center text-foreground/50">
         {#if $sqlInput.trim()}
-          <MessageCircleXIcon class="mx-auto mb-2 h-8 w-8 text-gray-600 dark:text-gray-400" />
+          <MessageCircleXIcon class="mx-auto mb-2 h-8 w-8 text-foreground/50" />
           <p class="mb-4 text-sm">Error in your SQL code</p>
         {:else}
-          <Database class="mx-auto mb-2 h-8 w-8 text-gray-600 dark:text-gray-400" />
+          <Database class="mx-auto mb-2 h-8 w-8 text-foreground/50" />
           <p class="mb-4 text-sm">No tables defined</p>
         {/if}
         <Button
           variant="default"
           size="sm"
           onClick={() => (showNewTableForm = true)}
-          class="rounded-lg bg-gray-600 px-4 py-2 text-sm text-white transition-colors duration-150 hover:bg-zinc-700 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+          class="px-4 py-2 text-sm"
         >
           Create first table
         </Button>
@@ -484,19 +484,11 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #d4d4d8;
+    background-color: color-mix(in oklab, var(--foreground) 18%, transparent);
     border-radius: 9999px;
   }
 
-  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #3f3f46;
-  }
-
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: #a1a1aa;
-  }
-
-  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: #52525b;
+    background-color: color-mix(in oklab, var(--foreground) 28%, transparent);
   }
 </style>

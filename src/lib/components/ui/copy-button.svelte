@@ -41,9 +41,16 @@
 </script>
 
 <Button {variant} {size} {title} {disabled} onClick={copyToClipboard} {...restProps}>
-  {#if isCopied}
-    <Check class="h-4 w-4 animate-pulse" />
-  {:else}
-    <Copy class="h-4 w-4" />
-  {/if}
+  <span class="relative h-4 w-4">
+    <Check
+      class="absolute inset-0 h-4 w-4 transition-[opacity,filter,scale] duration-200 ease-[var(--ease-out)] {isCopied
+        ? 'scale-100 opacity-100 blur-0'
+        : 'scale-[0.25] opacity-0 blur-[4px]'}"
+    />
+    <Copy
+      class="absolute inset-0 h-4 w-4 transition-[opacity,filter,scale] duration-200 ease-[var(--ease-out)] {isCopied
+        ? 'scale-[0.25] opacity-0 blur-[4px]'
+        : 'scale-100 opacity-100 blur-0'}"
+    />
+  </span>
 </Button>
