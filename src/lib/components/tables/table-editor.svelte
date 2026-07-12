@@ -14,6 +14,7 @@
   import { getColumnBadges } from '$lib/utils/canvas';
   import Badget from '$lib/components/ui/badget.svelte';
   import MenuBar from '$lib/components/ui/menu-bar.svelte';
+  import Tooltip from '$lib/components/ui/tooltip.svelte';
 
   interface Props {
     table: Table;
@@ -173,22 +174,26 @@
             </div>
 
             <div class="flex items-center gap-1">
-              <Button
-                variant="icon"
-                size="sm"
-                onClick={() => onEditColumn(table.name, column)}
-                title="Edit column"
-              >
-                <Pencil class="h-3 w-3" />
-              </Button>
-              <Button
-                variant="icon"
-                size="sm"
-                onClick={() => onRemoveColumn(table.name, column.name)}
-                title="Remove column"
-              >
-                <Trash2 class="h-3 w-3" />
-              </Button>
+              <Tooltip content="Edit column" position="left">
+                <Button
+                  variant="icon"
+                  size="sm"
+                  onClick={() => onEditColumn(table.name, column)}
+                  aria-label="Edit column"
+                >
+                  <Pencil class="h-3 w-3" />
+                </Button>
+              </Tooltip>
+              <Tooltip content="Remove column" position="left">
+                <Button
+                  variant="icon"
+                  size="sm"
+                  onClick={() => onRemoveColumn(table.name, column.name)}
+                  aria-label="Remove column"
+                >
+                  <Trash2 class="h-3 w-3" />
+                </Button>
+              </Tooltip>
             </div>
           </div>
         {/each}

@@ -4,6 +4,7 @@
   import { handleParseSQL } from '$lib/handlers/sqlHandler';
   import { Plus, Trash2, Database, MessageCircleXIcon } from '@lucide/svelte';
   import Button from '$lib/components/ui/button.svelte';
+  import Tooltip from '$lib/components/ui/tooltip.svelte';
   import TableEditor from '$lib/components/tables/table-editor.svelte';
   import NewTableModal from '$lib/components/modals/new-table-modal.svelte';
   import EditTableModal from '$lib/components/modals/edit-table-modal.svelte';
@@ -372,18 +373,27 @@
       <span class="text-sm font-medium text-foreground">Schema Editor</span>
     </div>
     <div class="flex items-center gap-2">
-      <Button variant="icon" size="sm" onClick={() => (showNewTableForm = true)} title="Add table">
-        <Plus class="h-4 w-4" />
-      </Button>
-      <Button
-        variant="icon"
-        size="sm"
-        onClick={clearAll}
-        title="Clear all"
-        disabled={visualTables.length === 0 && !$sqlInput.trim()}
-      >
-        <Trash2 class="h-4 w-4" />
-      </Button>
+      <Tooltip content="Add table" position="bottom">
+        <Button
+          variant="icon"
+          size="sm"
+          onClick={() => (showNewTableForm = true)}
+          aria-label="Add table"
+        >
+          <Plus class="h-4 w-4" />
+        </Button>
+      </Tooltip>
+      <Tooltip content="Clear all" position="bottom">
+        <Button
+          variant="icon"
+          size="sm"
+          onClick={clearAll}
+          aria-label="Clear all"
+          disabled={visualTables.length === 0 && !$sqlInput.trim()}
+        >
+          <Trash2 class="h-4 w-4" />
+        </Button>
+      </Tooltip>
     </div>
   </div>
 

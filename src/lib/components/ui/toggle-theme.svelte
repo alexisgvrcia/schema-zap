@@ -8,7 +8,7 @@
   variant="icon"
   size="sm"
   onClick={toggleMode}
-  title={mode.current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+  aria-label={mode.current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   aria-pressed={mode.current === 'dark'}
 >
   <span class="relative h-4 w-4">

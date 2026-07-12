@@ -6,6 +6,7 @@
   import Button from '$lib/components/ui/button.svelte';
   import CopyButton from '$lib/components/ui/copy-button.svelte';
   import DeleteButton from '$lib/components/ui/delete-button.svelte';
+  import Tooltip from '$lib/components/ui/tooltip.svelte';
   import Dropdown from '$lib/components/ui/dropdown.svelte';
   import SQLInput from '$lib/components/sql/sql-input.svelte';
   import { sqlInput, selectedDialect } from '$lib/stores/app';
@@ -142,9 +143,11 @@
       </div>
 
       <div class="flex flex-shrink-0 items-center gap-1">
-        <Button variant="icon" size="sm" title="Load sample SQL" onClick={loadSample}>
-          <RotateCcw class="h-4 w-4" />
-        </Button>
+        <Tooltip content="Load sample SQL" position="bottom">
+          <Button variant="icon" size="sm" aria-label="Load sample SQL" onClick={loadSample}>
+            <RotateCcw class="h-4 w-4" />
+          </Button>
+        </Tooltip>
 
         <CopyButton text={$sqlInput} disabled={!$sqlInput} />
 
