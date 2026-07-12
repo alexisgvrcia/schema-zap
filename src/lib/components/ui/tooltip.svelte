@@ -24,6 +24,8 @@
   }
 
   function show() {
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
     updatePosition();
     isOpen = true;
   }
@@ -95,6 +97,12 @@
   @media (prefers-reduced-motion: reduce) {
     .tooltip-content {
       transition: none;
+    }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .tooltip-content {
+      display: none;
     }
   }
 </style>
