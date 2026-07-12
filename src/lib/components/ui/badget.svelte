@@ -10,7 +10,7 @@
 
 <span
   class={cn(
-    'rounded border px-1.5 py-0.5 font-mono text-xs',
+    'rounded border px-1.5 py-0.5 text-xs',
     'border-foreground/12 bg-primary text-foreground/70'
   )}
 >

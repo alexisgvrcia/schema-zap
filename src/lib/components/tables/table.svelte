@@ -193,7 +193,7 @@
                 {column.name}
               </span>
             </div>
-            <div class={cn('flex items-center gap-2 font-mono text-xs', 'text-foreground/55')}>
+            <div class={cn('flex items-center gap-2 text-xs', 'text-foreground/55')}>
               <span class="truncate">
                 {formatColumnType(column.type)}
               </span>
@@ -218,7 +218,7 @@
         {#if column.defaultValue}
           <div class="mt-1 pl-5">
             <span class="text-xs text-foreground/45">
-              Default: <span class="font-mono">{column.defaultValue}</span>
+              Default: <span>{column.defaultValue}</span>
             </span>
           </div>
         {/if}

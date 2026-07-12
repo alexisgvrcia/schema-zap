@@ -155,10 +155,10 @@
               </div>
 
               <div class="flex flex-col">
-                <span class="font-mono text-sm text-foreground">
+                <span class="text-sm text-foreground">
                   {column.name}
                 </span>
-                <span class="font-mono text-xs text-foreground/45">
+                <span class="text-xs text-foreground/45">
                   {column.type}
                 </span>
               </div>
