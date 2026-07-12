@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { SQLDialect } from '$lib/types';
   import { SQL_EXAMPLES } from '$lib/constants';
-  import { RotateCcw, CircleAlert, Check, Database } from 'lucide-svelte';
+  import { RotateCcw, CircleAlert, Check, Database } from '@lucide/svelte';
   import Button from '$lib/components/ui/button.svelte';
   import CopyButton from '$lib/components/ui/copy-button.svelte';
   import DeleteButton from '$lib/components/ui/delete-button.svelte';

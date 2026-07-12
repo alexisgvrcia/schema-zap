@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Database } from 'lucide-svelte';
+  import { Database } from '@lucide/svelte';
   import { schema } from '$lib/stores/app';
   import Header from '$lib/components/layout/header.svelte';
   import Sidebar from '$lib/components/layout/sidebar.svelte';

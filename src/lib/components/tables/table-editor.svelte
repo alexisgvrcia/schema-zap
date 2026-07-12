@@ -9,7 +9,7 @@
     Plus,
     Trash2,
     GripVertical
-  } from 'lucide-svelte';
+  } from '@lucide/svelte';
   import { cn } from '$lib/utils';
   import { getColumnBadges } from '$lib/utils/canvas';
   import Badget from '$lib/components/ui/badget.svelte';

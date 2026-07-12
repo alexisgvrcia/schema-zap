@@ -2,7 +2,7 @@
   import { showSidebar } from '$lib/stores/ui';
   import InputEditor from '$lib/components/input-editor.svelte';
   import VisualEditor from '$lib/components/visual-editor.svelte';
-  import { Code, Settings, ChevronLeft, ChevronRight } from 'lucide-svelte';
+  import { Code, Settings, ChevronLeft, ChevronRight } from '@lucide/svelte';
   import Button from '$lib/components/ui/button.svelte';
   import { cn } from '$lib/utils';
 

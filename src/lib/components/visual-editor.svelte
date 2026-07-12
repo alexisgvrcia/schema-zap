@@ -2,7 +2,7 @@
   import { sqlInput, selectedDialect, schema } from '$lib/stores/app';
   import { type Table, type Column } from '$lib/types';
   import { handleParseSQL } from '$lib/handlers/sqlHandler';
-  import { Plus, Trash2, Database, MessageCircleXIcon } from 'lucide-svelte';
+  import { Plus, Trash2, Database, MessageCircleXIcon } from '@lucide/svelte';
   import Button from '$lib/components/ui/button.svelte';
   import TableEditor from '$lib/components/tables/table-editor.svelte';
   import NewTableModal from '$lib/components/modals/new-table-modal.svelte';

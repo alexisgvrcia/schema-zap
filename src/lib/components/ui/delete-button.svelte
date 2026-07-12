@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Check, X, Trash2 } from 'lucide-svelte';
+  import { Check, X, Trash2 } from '@lucide/svelte';
   import Button from './button.svelte';
 
   interface Props {

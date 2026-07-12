@@ -23,7 +23,7 @@
     Package,
     Tag,
     AtSign
-  } from 'lucide-svelte';
+  } from '@lucide/svelte';
   import { canvasState } from '$lib/stores/app';
   import { showBadgets } from '$lib/stores/ui';
   import { cn } from '$lib/utils';

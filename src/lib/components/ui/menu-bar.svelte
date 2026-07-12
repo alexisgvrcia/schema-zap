@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn } from '$lib/utils';
   import { onMount } from 'svelte';
-  import { Settings } from 'lucide-svelte';
+  import { Settings } from '@lucide/svelte';
 
   interface MenuOption {
     label: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Download } from 'lucide-svelte';
+  import { Download } from '@lucide/svelte';
   import { schema, canvasState } from '$lib/stores/app';
 
   import { toPng } from 'html-to-image';
